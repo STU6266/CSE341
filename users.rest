@@ -1,0 +1,11 @@
+### Get all users
+GET http://localhost:3000/users
+
+### Get Martine Hayden
+GET http://localhost:3000/users/695965094db8351588e534e4
+
+### Get Samuel Schäffner
+Get http://localhost:3000/users/695967574db8351588e534e5
+
+### Get David Krywult
+Get http://localhost:3000/users/6959680e4db8351588e534e6
