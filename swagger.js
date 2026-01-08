@@ -8,7 +8,7 @@ const doc = {
     description: 'CSE 341 Contacts / Users API',
   },
 
-  schemes: ['https', 'http'],
+  schemes: ['http', 'https'],
   basePath: '/',
 };
 
