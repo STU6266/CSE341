@@ -5,207 +5,163 @@
     "description": "CSE 341 Contacts / Users API",
     "version": "1.0.0"
   },
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "http",
-    "https"
+    "https",
+    "http"
   ],
   "paths": {
     "/": {
       "get": {
-        "tags": [
-          "Hello World"
-        ],
-        "summary": "Simple Hello World endpoint",
-        "produces": [
-          "text/plain"
-        ],
+        "description": "",
         "responses": {
           "200": {
-            "description": "Returns a greeting string."
+            "description": "OK"
           }
         }
       }
     },
-    "/users": {
+    "/api-docs": {
       "get": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "Get all users",
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users/": {
+      "get": {
+        "description": "",
         "produces": [
           "application/json"
         ],
         "responses": {
           "200": {
-            "description": "A list of users from MongoDB.",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/User"
-              }
-            }
+            "description": "OK"
           }
         }
       },
       "post": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "Create a new user",
-        "description": "Creates a new user document in MongoDB.",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "description": "",
         "parameters": [
           {
-            "in": "body",
             "name": "body",
-            "description": "User object to create",
-            "required": true,
+            "in": "body",
             "schema": {
-              "$ref": "#/definitions/User"
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "favoritColor": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                }
+              }
             }
           }
         ],
         "responses": {
-          "201": {
-            "description": "User created successfully."
+          "204": {
+            "description": "No Content"
           },
-          "400": {
-            "description": "Invalid input."
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
     "/users/{id}": {
       "get": {
-        "tags": [
-          "Users"
+        "description": "",
+        "produces": [
+          "application/json"
         ],
-        "summary": "Get a single user by ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string",
-            "description": "MongoDB ObjectId of the user."
+            "type": "string"
           }
-        ],
-        "produces": [
-          "application/json"
         ],
         "responses": {
           "200": {
-            "description": "The user with the given ID.",
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
-          },
-          "404": {
-            "description": "User not found."
+            "description": "OK"
           }
         }
       },
       "put": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "Update an existing user",
-        "description": "Updates a user document in MongoDB.",
+        "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string",
-            "description": "MongoDB ObjectId of the user to update."
+            "type": "string"
           },
           {
-            "in": "body",
             "name": "body",
-            "description": "Updated user object",
-            "required": true,
+            "in": "body",
             "schema": {
-              "$ref": "#/definitions/User"
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "favoritColor": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                }
+              }
             }
-          }
-        ],
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "User updated successfully."
-          },
-          "400": {
-            "description": "Invalid input."
-          },
-          "404": {
-            "description": "User not found."
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "Delete a user",
-        "description": "Deletes a user document from MongoDB.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "MongoDB ObjectId of the user to delete."
           }
         ],
         "responses": {
           "204": {
-            "description": "User deleted successfully."
+            "description": "No Content"
           },
-          "404": {
-            "description": "User not found."
+          "500": {
+            "description": "Internal Server Error"
           }
         }
-      }
-    }
-  },
-  "definitions": {
-    "User": {
-      "type": "object",
-      "properties": {
-        "_id": {
-          "type": "string",
-          "example": "69596800e4db8351588e534e6"
-        },
-        "firstName": {
-          "type": "string",
-          "example": "Martine"
-        },
-        "lastName": {
-          "type": "string",
-          "example": "Hayden"
-        },
-        "email": {
-          "type": "string",
-          "example": "martinehayden@gmail.com"
-        },
-        "favoriteColor": {
-          "type": "string",
-          "example": "Black"
-        },
-        "birthday": {
-          "type": "string",
-          "example": "05.July.1988"
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
         }
       }
     }
