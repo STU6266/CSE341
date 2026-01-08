@@ -1,11 +1,10 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Users Api",
-    "description": "Users Api",
+    "title": "Users API",
+    "description": "CSE 341 Contacts / Users API",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
     "http",
@@ -17,147 +16,98 @@
         "tags": [
           "Hello World"
         ],
-        "description": "",
+        "summary": "Simple Hello World endpoint",
+        "produces": [
+          "text/plain"
+        ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Returns a greeting string."
           }
         }
       }
     },
-    "/users/": {
+    "/users": {
       "get": {
         "tags": [
           "Users"
         ],
-        "description": "",
+        "summary": "Get all users",
         "produces": [
           "application/json"
         ],
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
+            "description": "A list of users from MongoDB.",
             "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "favoritColor": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                }
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
               }
             }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
     },
     "/users/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get a single user by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "MongoDB ObjectId of the user."
+          }
+        ],
         "produces": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
+            "description": "The user with the given ID.",
             "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "favoritColor": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/User"
             }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
           },
-          "500": {
-            "description": "Internal Server Error"
+          "404": {
+            "description": "User not found."
           }
         }
-      },
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "example": "69596800e4db8351588e534e6"
+        },
+        "firstName": {
+          "type": "string",
+          "example": "Martine"
+        },
+        "lastName": {
+          "type": "string",
+          "example": "Hayden"
+        },
+        "email": {
+          "type": "string",
+          "example": "martinehayden@gmail.com"
+        },
+        "favoriteColor": {
+          "type": "string",
+          "example": "Black"
+        },
+        "birthday": {
+          "type": "string",
+          "example": "05.July.1988"
         }
       }
     }
