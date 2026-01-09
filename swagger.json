@@ -61,7 +61,7 @@
                 "email": {
                   "example": "any"
                 },
-                "favoritColor": {
+                "favoriteColor": {
                   "example": "any"
                 },
                 "birthday": {
@@ -125,7 +125,7 @@
                 "email": {
                   "example": "any"
                 },
-                "favoritColor": {
+                "favoriteColor": {
                   "example": "any"
                 },
                 "birthday": {
