@@ -7,7 +7,7 @@ const getAll = async (req, res) => {
     const result = await mongodb
       .getDatabase()
       .db()
-      .collection('users')
+      .collection('Contacts')
       .find();
 
     result.toArray().then((users) => {
@@ -26,7 +26,7 @@ const getSingle = async (req, res) => {
     const result = await mongodb
       .getDatabase()
       .db()
-      .collection('users')
+      .collection('Contacts')
       .find({ _id: userId });
 
     result.toArray().then((users) => {
@@ -51,7 +51,7 @@ const createUser = async (req, res) => {
     const response = await mongodb
       .getDatabase()
       .db()
-      .collection('users')
+      .collection('Contacts')
       .insertOne(user);
 
     if (response.acknowledged) {
@@ -82,7 +82,7 @@ const updateUser = async (req, res) => {
     const response = await mongodb
       .getDatabase()
       .db()
-      .collection('users')
+      .collection('Contacts')
       .replaceOne({ _id: userId }, user);
 
     if (response.modifiedCount > 0) {
@@ -104,7 +104,7 @@ const deleteUser = async (req, res) => {
     const response = await mongodb
       .getDatabase()
       .db()
-      .collection('users')
+      .collection('Contacts')
       .deleteOne({ _id: userId });
 
     if (response.deletedCount > 0) {
